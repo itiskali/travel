@@ -127,6 +127,19 @@ footer{color:var(--soft);font-size:13px;text-align:center;padding:0 16px 40px}
 .pill.ok{background:var(--ok);color:var(--card)}
 .pill.warn{background:var(--ver);color:#fff}
 
+/* Landing page */
+.trip-intro{max-width:62ch;margin:24px 0 8px;color:var(--soft);font-size:16.5px;line-height:1.6}
+.placegrid{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:14px;grid-template-columns:1fr}
+@media(min-width:720px){.placegrid{grid-template-columns:1fr 1fr}}
+.placecard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:4px}
+.placecard .hop{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--soft);margin-bottom:4px;flex-wrap:wrap}
+.placecard .hop strong{color:var(--ink);font-weight:700}
+.placecard .hop .nights{display:inline-block;padding:2px 10px;border-radius:12px;background:var(--chip);color:var(--ink);font-size:12.5px;font-weight:600}
+.placecard h3{font-size:22px;color:var(--ink);margin:0}
+.placecard p.feel{margin:4px 0 0;color:var(--soft);font-size:15px;flex:1}
+.placecard .go{margin-top:12px;color:var(--ver);font-weight:600;text-decoration:none;align-self:flex-start;display:inline-flex;gap:6px;align-items:center;min-height:32px}
+.placecard .go:hover{text-decoration:underline}
+
 /* Snow animation on hero SVGs */
 .snow circle{animation:fall 9s linear infinite}
 @keyframes fall{from{transform:translateY(-40px)}to{transform:translateY(460px)}}
