@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Japan Winter Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700&family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/*
+VOICE: calm, warm, a friend's travel folder, not a sales brochure.
+IDEA: a ryokan welcome folder: one card per day, with an inked timeline and tucked-in option slips.
+PICTURE: hand-drawn winter scenes (bathhouse steam, train in snow, monkeys in a pool) in a swipeable gallery.
+COLOUR and TYPE: aizome indigo with snow white and one vermilion accent; Zen Kaku Gothic New headings, Noto Sans body.
+LAYOUT: gallery on top, sticky day tabs, one day at a time, timeline with large hanging times.
+*/
+:root{color-scheme:light dark;
+--bg:light-dark(#f7f8fa,#0f1424);--card:light-dark(#ffffff,#171e33);--ink:light-dark(#18223d,#e9ecf5);
+--soft:light-dark(#5a6482,#a7afc6);--line:light-dark(#dfe3ec,#2a3350);--indigo:light-dark(#1f2d55,#2b3c70);
+--ver:light-dark(#d4452a,#ff7a5c);--chip:light-dark(#eef1f7,#222a44);--ok:light-dark(#1d6b4f,#7fd6ac)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Noto Sans",system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Zen Kaku Gothic New",system-ui,sans-serif;line-height:1.1;text-wrap:balance;margin:0}
+a{color:var(--ver)}
+.top{background:var(--indigo);color:#f2f4fb;padding:clamp(20px,4vw,40px) max(5vw,16px) 0}
+.top h1{font-size:clamp(32px,6vw,48px)}
+.top p{margin:6px 0 18px;color:#c9d0e6}
+.gal{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:18px;scrollbar-width:thin}
+.gal figure{flex:0 0 min(86%,520px);margin:0;scroll-snap-align:start;border-radius:14px;overflow:hidden;background:#101a38;position:relative}
+.gal svg,.gal img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+.gal figcaption{position:absolute;left:12px;bottom:10px;font-size:13px;color:#fff;background:rgba(10,16,36,.6);padding:3px 9px;border-radius:20px}
+.galbar{display:flex;gap:8px;align-items:center;padding-bottom:20px;flex-wrap:wrap}
+.btn{min-height:44px;padding:0 16px;border-radius:22px;border:1px solid rgba(255,255,255,.35);background:transparent;color:inherit;font:600 15px "Noto Sans",sans-serif;cursor:pointer}
+.btn:focus-visible,.tab:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--ver);outline-offset:2px}
+label.btn{display:inline-flex;align-items:center}
+.galbar small{color:#c9d0e6;font-size:13px}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:10px max(5vw,16px)}
+.tab{flex:none;min-height:44px;padding:0 14px;border-radius:22px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:600 14px "Noto Sans",sans-serif;cursor:pointer;text-align:left}
+.tab b{display:block;font-size:12px;color:var(--soft);font-weight:600}
+.tab[aria-selected=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tab[aria-selected=true] b{color:inherit;opacity:.75}
+main{max-width:900px;margin:0 auto;padding:clamp(20px,4vw,40px) max(5vw,16px) 60px}
+.dayhead h2{font-size:clamp(28px,5vw,40px)}
+.dayhead .where{color:var(--ver);font-weight:600;margin:0 0 6px}
+.dayhead p.lede{color:var(--soft);margin:10px 0 0;max-width:62ch}
+.note{background:var(--chip);border-radius:12px;padding:12px 14px;margin:18px 0;font-size:15px}
+.note strong{color:var(--ink)}
+ol.tl{list-style:none;margin:26px 0 0;padding:0}
+.step{display:grid;grid-template-columns:4.6em minmax(0,1fr);gap:0 14px;position:relative;padding-bottom:22px}
+.step::before{content:"";position:absolute;left:calc(4.6em + 6px);top:10px;bottom:0;width:2px;background:var(--line)}
+.step:last-child::before{display:none}
+.time{font:700 19px "Zen Kaku Gothic New",sans-serif;white-space:nowrap;text-align:right;padding-top:1px}
+.body{position:relative;padding-left:20px}
+.body::before{content:"";position:absolute;left:-1px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--card);border:3px solid var(--ver)}
+.step.done .body::before{background:var(--ok);border-color:var(--ok)}
+.body h3{font-size:19px;display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
+.body p{margin:4px 0 0;color:var(--soft);font-size:15.5px}
+.chk{flex:none;display:inline-flex;align-items:center;gap:6px;font:500 13px "Noto Sans",sans-serif;color:var(--soft);cursor:pointer;min-height:32px}
+.chk input{width:20px;height:20px;accent-color:var(--ok)}
+details.opts{margin-top:10px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+details.opts summary{cursor:pointer;list-style:none;min-height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-weight:600}
+details.opts summary::-webkit-details-marker{display:none}
+details.opts summary::after{content:"+";font-size:22px;color:var(--ver)}
+details.opts[open] summary::after{content:"\2212"}
+.opt{padding:12px 14px;border-top:1px solid var(--line)}
+.opt h4{margin:0;font-size:16px}
+.opt p{margin:3px 0 0;font-size:14.5px;color:var(--soft)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.tag{font-size:12.5px;padding:2px 9px;border-radius:20px;background:var(--chip);color:var(--ink);white-space:nowrap}
+.tag.d{background:var(--ok);color:var(--card)}
+.tag.b{background:var(--ver);color:#fff}
+.links{margin-top:6px;font-size:14px;display:flex;gap:14px;flex-wrap:wrap}
+.links a{min-height:32px;display:inline-flex;align-items:center}
+.pager{display:flex;justify-content:space-between;gap:10px;margin-top:20px}
+.pager .btn{border-color:var(--line);color:var(--ink);background:var(--card)}
+footer{color:var(--soft);font-size:13px;text-align:center;padding:0 16px 40px}
+.snow circle{animation:fall 9s linear infinite}
+@keyframes fall{from{transform:translateY(-40px)}to{transform:translateY(460px)}}
+@media(prefers-reduced-motion:reduce){.snow circle{animation:none}}
+@media(max-width:600px){.step{grid-template-columns:3.6em minmax(0,1fr);gap:0 10px}.step::before{left:calc(3.6em + 4px)}.time{font-size:16px}.body h3{font-size:17px;flex-direction:column;gap:2px}}
+</style>
+</head>
+<body>
+<header class="top">
+<h1>Japan in winter</h1>
+<p>Kalindi and Lisa · 29 Jan to 13 Feb 2027</p>
+<div class="gal" id="gal" tabindex="0" aria-label="Photo gallery">
+<figure><svg viewBox="0 0 800 500" role="img" aria-label="Oyu bathhouse in Nozawa in the snow">
+<defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a3a6e"/><stop offset="1" stop-color="#8a9cc8"/></linearGradient>
+<linearGradient id="st" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".8"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+<rect width="800" height="500" fill="url(#sk)"/>
+<path d="M0 300 L140 170 L260 260 L400 130 L560 250 L680 180 L800 260 V500 H0Z" fill="#c7d2ea"/>
+<path d="M0 330 L160 230 L300 300 L430 210 L600 300 L800 240 V500 H0Z" fill="#e8eef9"/>
+<g transform="translate(250 220)">
+<path d="M150 -10 C120 -60 180 -80 150 -130 C140 -150 160 -170 150 -190" stroke="url(#st)" stroke-width="22" fill="none" stroke-linecap="round"/>
+<rect x="40" y="110" width="220" height="120" fill="#5b3a2a"/><rect x="40" y="110" width="220" height="10" fill="#3d261b"/>
+<path d="M0 115 L150 40 L300 115Z" fill="#33241c"/><path d="M8 112 L150 46 L292 112 L292 120 L8 120Z" fill="#fff"/>
+<path d="M70 40 L150 0 L230 40Z" fill="#33241c"/><path d="M78 38 L150 6 L222 38 L222 44 L78 44Z" fill="#fff"/>
+<rect x="95" y="44" width="110" height="26" fill="#5b3a2a"/>
+<rect x="120" y="150" width="60" height="80" fill="#f3c76b"/><rect x="60" y="145" width="36" height="34" fill="#f3c76b" opacity=".85"/><rect x="204" y="145" width="36" height="34" fill="#f3c76b" opacity=".85"/>
+<rect x="-20" y="228" width="340" height="14" rx="7" fill="#fff"/></g>
+<g class="snow" fill="#fff" opacity=".85"><circle cx="60" cy="40" r="3"/><circle cx="180" cy="10" r="2"/><circle cx="320" cy="60" r="3"/><circle cx="470" cy="20" r="2"/><circle cx="610" cy="50" r="3"/><circle cx="740" cy="15" r="2"/></g>
+</svg><figcaption>Oyu, Nozawa</figcaption></figure>
+<figure><svg viewBox="0 0 800 500" role="img" aria-label="Shinkansen crossing snowy fields">
+<rect width="800" height="500" fill="#dfe7f5"/><path d="M0 230 L200 120 L360 210 L520 90 L800 220 V500 H0Z" fill="#b9c7e3"/>
+<rect y="300" width="800" height="200" fill="#f8fbff"/><rect y="352" width="800" height="8" fill="#8d97ad"/>
+<path d="M120 300 H640 Q760 300 790 345 H120Z" fill="#f4f6fa" stroke="#9aa6bf" stroke-width="3"/>
+<rect x="120" y="332" width="670" height="12" fill="#2d6fb8"/><rect x="120" y="344" width="670" height="5" fill="#c79a3c"/>
+<g fill="#1f2d55"><rect x="160" y="310" width="40" height="16" rx="4"/><rect x="220" y="310" width="40" height="16" rx="4"/><rect x="280" y="310" width="40" height="16" rx="4"/><rect x="340" y="310" width="40" height="16" rx="4"/><rect x="400" y="310" width="40" height="16" rx="4"/><rect x="460" y="310" width="40" height="16" rx="4"/><path d="M660 310 H700 Q735 312 748 330 H660Z"/></g>
+<g class="snow" fill="#fff"><circle cx="90" cy="60" r="3"/><circle cx="300" cy="30" r="2"/><circle cx="520" cy="70" r="3"/><circle cx="700" cy="25" r="2"/></g>
+</svg><figcaption>Hokuriku Shinkansen</figcaption></figure>
+<figure><svg viewBox="0 0 800 500" role="img" aria-label="Snow monkey soaking in a steaming pool">
+<rect width="800" height="500" fill="#3c4a5e"/><path d="M0 0 H800 V200 Q600 160 400 210 T0 190Z" fill="#56657c"/>
+<ellipse cx="400" cy="400" rx="360" ry="110" fill="#7fa3b8"/><ellipse cx="400" cy="392" rx="330" ry="90" fill="#9cc2d4"/>
+<path d="M260 320 C240 260 290 240 270 190 M520 330 C500 270 560 250 530 190" stroke="#fff" stroke-opacity=".35" stroke-width="26" fill="none" stroke-linecap="round"/>
+<ellipse cx="400" cy="370" rx="95" ry="45" fill="#8a6b55"/>
+<circle cx="400" cy="300" r="62" fill="#9a7a62"/><ellipse cx="400" cy="244" rx="74" ry="26" fill="#fff"/>
+<ellipse cx="400" cy="312" rx="38" ry="34" fill="#e7a99a"/><circle cx="386" cy="304" r="5" fill="#2b1d16"/><circle cx="414" cy="304" r="5" fill="#2b1d16"/>
+<path d="M392 326 Q400 331 408 326" stroke="#2b1d16" stroke-width="3" fill="none" stroke-linecap="round"/>
+<circle cx="338" cy="300" r="12" fill="#e7a99a"/><circle cx="462" cy="300" r="12" fill="#e7a99a"/>
+<path d="M40 470 Q400 520 760 470 V500 H40Z" fill="#fff"/>
+<g class="snow" fill="#fff"><circle cx="120" cy="40" r="3"/><circle cx="340" cy="20" r="2"/><circle cx="580" cy="50" r="3"/><circle cx="720" cy="30" r="2"/></g>
+</svg><figcaption>Jigokudani snow monkeys</figcaption></figure>
+<figure><svg viewBox="0 0 800 500" role="img" aria-label="Ginza street at dusk">
+<rect width="800" height="500" fill="#2b2f5a"/><rect y="300" width="800" height="200" fill="#1b1f3d"/>
+<g fill="#3b4178"><rect x="20" y="120" width="140" height="200"/><rect x="180" y="60" width="120" height="260"/><rect x="320" y="140" width="150" height="180"/><rect x="490" y="80" width="130" height="240"/><rect x="640" y="130" width="140" height="190"/></g>
+<g fill="#f3c76b"><rect x="40" y="150" width="20" height="14"/><rect x="80" y="190" width="20" height="14"/><rect x="200" y="100" width="20" height="14"/><rect x="250" y="160" width="20" height="14"/><rect x="350" y="180" width="20" height="14"/><rect x="420" y="220" width="20" height="14"/><rect x="510" y="120" width="20" height="14"/><rect x="570" y="200" width="20" height="14"/><rect x="670" y="170" width="20" height="14"/><rect x="720" y="230" width="20" height="14"/></g>
+<rect x="244" y="30" width="12" height="40" fill="#d4452a"/><circle cx="250" cy="30" r="14" fill="#f3c76b"/>
+<path d="M0 420 H800" stroke="#f3c76b" stroke-width="3" stroke-dasharray="30 24"/>
+</svg><figcaption>Ginza at dusk</figcaption></figure>
+<figure><svg viewBox="0 0 800 500" role="img" aria-label="Kanazawa teahouse lane in snow">
+<rect width="800" height="500" fill="#e9edf5"/><rect y="390" width="800" height="110" fill="#fbfcff"/>
+<g fill="#6b3b26"><rect x="0" y="170" width="250" height="220"/><rect x="550" y="170" width="250" height="220"/><rect x="290" y="210" width="220" height="180"/></g>
+<g fill="#4a2818"><path d="M-10 175 L130 120 L260 175Z"/><path d="M540 175 L670 120 L810 175Z"/><path d="M280 215 L400 165 L520 215Z"/></g>
+<g fill="#fff"><path d="M-10 172 L130 117 L260 172 L260 180 L-10 180Z"/><path d="M540 172 L670 117 L810 172 L810 180 L540 180Z"/><path d="M280 212 L400 162 L520 212 L520 220 L280 220Z"/></g>
+<g stroke="#3a1f12" stroke-width="5"><path d="M20 220 V380 M40 220 V380 M60 220 V380 M80 220 V380 M100 220 V380 M120 220 V380 M140 220 V380 M160 220 V380 M180 220 V380 M200 220 V380 M220 220 V380"/><path d="M580 220 V380 M600 220 V380 M620 220 V380 M640 220 V380 M660 220 V380 M680 220 V380 M700 220 V380 M720 220 V380 M740 220 V380 M760 220 V380"/></g>
+<g fill="#f3c76b"><rect x="370" y="270" width="60" height="120"/><ellipse cx="270" cy="250" rx="14" ry="20"/><ellipse cx="530" cy="250" rx="14" ry="20"/></g>
+<g class="snow" fill="#9fb0d4"><circle cx="100" cy="40" r="3"/><circle cx="300" cy="20" r="2"/><circle cx="500" cy="60" r="3"/><circle cx="700" cy="30" r="2"/></g>
+</svg><figcaption>Higashi Chaya, Kanazawa</figcaption></figure>
+<figure><svg viewBox="0 0 800 500" role="img" aria-label="Mount Yotei above a frozen lake">
+<rect width="800" height="500" fill="#bfd3ef"/><path d="M160 330 L400 90 L640 330Z" fill="#7d8fb4"/><path d="M330 160 L400 90 L470 160 L440 175 L400 150 L360 178Z" fill="#fff"/>
+<path d="M0 340 Q200 300 400 330 T800 320 V500 H0Z" fill="#f3f7fd"/><ellipse cx="400" cy="400" rx="230" ry="42" fill="#dbe6f4"/>
+<g fill="#2f4a3c"><path d="M60 340 L80 280 L100 340Z"/><path d="M100 345 L125 270 L150 345Z"/><path d="M660 338 L685 268 L710 338Z"/><path d="M710 342 L732 285 L754 342Z"/></g>
+<g fill="#a9b8cf"><ellipse cx="150" cy="470" rx="10" ry="5"/><ellipse cx="190" cy="455" rx="10" ry="5"/><ellipse cx="230" cy="465" rx="10" ry="5"/><ellipse cx="270" cy="450" rx="10" ry="5"/><ellipse cx="310" cy="458" rx="10" ry="5"/></g>
+<g class="snow" fill="#fff"><circle cx="80" cy="50" r="3"/><circle cx="260" cy="30" r="2"/><circle cx="560" cy="40" r="3"/><circle cx="730" cy="70" r="2"/></g>
+</svg><figcaption>Mt Yotei, Niseko</figcaption></figure>
+<figure><svg viewBox="0 0 800 500" role="img" aria-label="Otaru canal with snow lanterns at night">
+<rect width="800" height="500" fill="#1a2244"/><g fill="#3b3550"><rect x="40" y="150" width="200" height="150"/><rect x="260" y="130" width="220" height="170"/><rect x="500" y="160" width="260" height="140"/></g>
+<g fill="#2a2540"><path d="M30 155 L140 110 L250 155Z"/><path d="M250 135 L370 90 L490 135Z"/><path d="M490 165 L630 120 L770 165Z"/></g>
+<g fill="#f3c76b" opacity=".9"><rect x="80" y="200" width="22" height="30"/><rect x="170" y="200" width="22" height="30"/><rect x="320" y="190" width="22" height="30"/><rect x="420" y="190" width="22" height="30"/><rect x="560" y="210" width="22" height="30"/><rect x="680" y="210" width="22" height="30"/></g>
+<rect y="300" width="800" height="40" fill="#f3f6fc"/><rect y="340" width="800" height="160" fill="#243565"/>
+<g fill="#fff"><path d="M60 300 Q75 270 90 300Z"/><path d="M180 300 Q195 270 210 300Z"/><path d="M300 300 Q315 270 330 300Z"/><path d="M420 300 Q435 270 450 300Z"/><path d="M540 300 Q555 270 570 300Z"/><path d="M660 300 Q675 270 690 300Z"/></g>
+<g fill="#ffd27a"><circle cx="75" cy="292" r="5"/><circle cx="195" cy="292" r="5"/><circle cx="315" cy="292" r="5"/><circle cx="435" cy="292" r="5"/><circle cx="555" cy="292" r="5"/><circle cx="675" cy="292" r="5"/><circle cx="150" cy="390" r="6"/><circle cx="290" cy="420" r="6"/><circle cx="450" cy="380" r="6"/><circle cx="600" cy="430" r="6"/><circle cx="720" cy="395" r="6"/></g>
+<g fill="#ffd27a" opacity=".25"><circle cx="150" cy="390" r="16"/><circle cx="290" cy="420" r="16"/><circle cx="450" cy="380" r="16"/><circle cx="600" cy="430" r="16"/><circle cx="720" cy="395" r="16"/></g>
+<g class="snow" fill="#fff" opacity=".8"><circle cx="100" cy="40" r="3"/><circle cx="340" cy="20" r="2"/><circle cx="560" cy="50" r="3"/><circle cx="740" cy="25" r="2"/></g>
+</svg><figcaption>Snow Light Path, Otaru</figcaption></figure>
+</div>
+<div class="galbar">
+<button class="btn" type="button" id="prev" aria-label="Previous photo">Prev</button>
+<button class="btn" type="button" id="next" aria-label="Next photo">Next</button>
+<label class="btn" for="up">Add your photos</label><input id="up" type="file" accept="image/*" multiple hidden>
+<small>Your photos show on this device only. Send them to Claude to add them for good.</small>
+</div>
+</header>
+<nav><div class="tabs" id="tabs" role="tablist" aria-label="Days"></div></nav>
+<main id="day" aria-live="polite"></main>
+<footer>Facts checked 26 to 27 Nov 2026. Opening hours change, so check Instagram or Google before you go. Nothing is booked unless it says so.</footer>
+<script>
+{
+const T={d:["Celiac: dedicated","d"],c:["Celiac: careful","c"],a:["Celiac: ask","c"],b:["Both of you","b"],v:["Vegetarian",""],x:["Not for Lisa",""],k:["Coffee",""]};
+const map=q=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
+const DAYS=[
+{id:"day-0",tab:"Fri 29 Jan",short:"Fly",where:"Geneva to Tokyo",title:"Day 0 · Up and away",lede:"Two Lufthansa flights, business class, landing at Haneda the next morning.",
+note:"<strong>Before you go:</strong> online check-in opens 23 hours before departure. Japan needs Advance Passenger Information, so fill it in at check-in. Ask Lufthansa for a gluten-free meal for Lisa and a vegetarian meal for Kalindi in Manage booking, and pack safe snacks in case.",
+steps:[
+{t:"09:25",h:"LH2383 Geneva to Munich",p:"Geneva T1, lands Munich T2 at 10:35. 2h 20m to connect."},
+{t:"12:55",h:"LH714 Munich to Tokyo Haneda",p:"Munich T2 to Haneda T3, arriving Sat 30 Jan at 09:15. Sleep as much as you can."},
+]},
+{id:"day-1",tab:"Sat 30 Jan",short:"Tokyo",where:"Tokyo · Ginza",title:"Day 1 · Soft landing",lede:"Nothing to rush. Coffee, an easy lunch, a slow wander through Ginza and an early night.",
+note:"<strong>Hotel:</strong> not booked yet. Most Tokyo hotels check in around 15:00, so plan to drop your bags in the morning and come back.",
+steps:[
+{t:"09:15",h:"Land at Haneda, Terminal 3",p:"Immigration, bags, then cash and an IC travel card (Suica or Pasmo) for trains and konbini."},
+{t:"10:30",h:"Taxi to Ginza",p:"About 30 to 40 minutes depending on traffic. Taxis take cards. The airport limousine bus is the alternative, about 45 to 70 minutes, with staff loading your bags."},
+{t:"11:15",h:"Drop bags at the hotel",p:"Freshen up, then head out on foot."},
+{t:"11:30",h:"First coffee",p:"Pick one, all walkable.",opts:[
+{n:"Bongen Coffee",d:"Specialty, highly rated, in the backstreets toward Tsukiji.",tags:["k"],q:"Bongen Coffee Ginza"},
+{n:"Geshary Coffee",d:"Serves only Gesha beans. A short walk away in Hibiya.",tags:["k"],q:"Geshary Coffee Hibiya"},
+{n:"METoA Cafe & Kitchen",d:"Australian-style specialty cafe in Ginza.",tags:["k"],q:"METoA Cafe Kitchen Ginza"}]},
+{t:"12:30",h:"Easy lunch",p:"FANCL is the safest first meal of the trip.",opts:[
+{n:"FANCL Brown Rice Meals",d:"Whole kitchen gluten-free. Weekday lunch has a vegan plate set. 1 min from Ginza Station exit A4. Lunch 11:30 to 16:00.",tags:["d","b"],q:"FANCL Ginza Square"},
+{n:"Soranoiro Nippon",d:"Gluten-free shio ramen with brown rice noodles, and vegan ramen. Tokyo Station Ramen Street, about 1 km. Expect a queue.",tags:["c","b"],q:"Soranoiro Nippon Tokyo Station"}]},
+{t:"14:00",h:"Slow afternoon",p:"Choose by energy.",opts:[
+{n:"Washi papermaking at Ozu Washi",d:"Tokyo's washi house since 1653, in Nihonbashi. About 45 minutes, you take your sheet home the same day. Book ahead.",tags:[],q:"Ozu Washi Nihonbashi",u:"https://www.gotokyo.org/en/workshop/sd037/index.html"},
+{n:"Ginza wander",d:"Stationery, paper and craft shops for a first look, ahead of your shopping days at the end of the trip.",tags:[],q:"Ginza stationery shop"},
+{n:"Shimokitazawa Tengu Festival",d:"Setsubun parade. The 2027 dates aren't confirmed yet, so check before going.",tags:[],q:"Shimokitazawa"}]},
+{t:"15:00",h:"Check in and rest",p:"Bath, nap, unpack only what you need: you leave for the mountains tomorrow."},
+{t:"18:30",h:"Dinner",p:"All need booking ahead.",opts:[
+{n:"Ain Soph Ginza",d:"Plant-based Japanese with gluten-free dishes. Dinner from 18:00 is the menu reviewers rate highest. Some cross-contact risk noted.",tags:["c","b"],q:"Ain Soph Ginza"},
+{n:"Gluten Free Kushiage Su",d:"Whole kitchen gluten-free. Six-seat counter, seasonal fried skewers, everyone starts at 19:00. Book via TableCheck. Seafood-heavy, vegetarian not confirmed.",tags:["d","x"],q:"Gluten Free Kushiage Su Ginza"},
+{n:"Faro",d:"Fine dining with a vegan tasting menu that needs an advance reservation. Kalindi's special dinner.",tags:["v"],q:"Faro Shiseido Building Ginza",u:"https://guide.michelin.com/rs/en/tokyo-region/tokyo/restaurant/faro-1194154"}]},
+{t:"21:00",h:"Early night",p:"Jet lag is real. Tomorrow is a travel day."}]},
+{id:"day-2",tab:"Sun 31 Jan",short:"To Nozawa",where:"Tokyo to Nozawa Onsen",title:"Day 2 · Into the snow",lede:"One bullet train and one bus take you from Ginza to a hot spring village under a ski mountain.",
+note:"<strong>Food on the move:</strong> train food is a gluten risk for Lisa. Pack her snacks from Tokyo. Konbini backup: plain salted salmon or umeboshi onigiri, after reading the whole label.",
+steps:[
+{t:"08:00",h:"Coffee and checkout",p:"Grab coffee near the hotel, then a short taxi to Tokyo Station (about 1 km)."},
+{t:"09:00",h:"Hokuriku Shinkansen to Iiyama",p:"100 to 120 minutes, about one train an hour. Reserve seats. Watch the fields turn white after Nagano."},
+{t:"11:00",h:"Nozawa Onsen Liner bus",p:"From Iiyama's Chikuma river exit, bus stop 4. Tickets from the machine by the stop. About 25 minutes, every 1 to 2 hours. Take the Liner, not the slower local bus with no luggage space. Buses get crowded with skiers, so a taxi or Uber is the fallback."},
+{t:"12:00",h:"Arrive, drop bags",p:"Everything in the village is walkable from the bus terminal."},
+{t:"12:30",h:"Coffee and lunch",p:"Get your bearings over food.",opts:[
+{n:"Shizen",d:"Mostly vegan cafe and yoga space. Gluten-free options change daily.",tags:["a","b"],q:"Shizen Collective Nozawa Onsen"},
+{n:"Tanuki cafe",d:"Hand-drip coffee with its own blend, just down from Oyu.",tags:["k"],q:"Tanuki cafe Nozawa Onsen"},
+{n:"Nappa Cafe",d:"Locals' favourite for coffee, served in real cups, plus cakes.",tags:["k"],q:"Nappa Cafe Nozawa Onsen"}]},
+{t:"14:00",h:"Walk the village",p:"Narrow lanes, canals and steam. Stop at Ogama, the boiling spring near 100°C where villagers cook eggs and vegetables. Only villagers cook there, but shops next to it sell onsen eggs."},
+{t:"16:00",h:"First bath: Oyu",p:"The largest bathhouse, a wooden building in the centre. Free, open 06:00 to 23:00 in winter. The water is very hot: ease in, and ask before cooling it with cold water. The baths are kept by neighbourhood groups, so treat them like someone's home."},
+{t:"18:30",h:"Dinner in the village",p:"Restaurants are small: book ahead and keep the booking.",opts:[
+{n:"Village restaurant guide",d:"Filter for gluten-free, vegetarian and vegan.",tags:[],q:"Nozawa Onsen restaurants",u:"https://nozawahospitality.com/bars-restaurants"},
+{n:"Pots Bar & Kitchen",d:"Gluten-free items marked on the menu. Reviewers rated cross-contact care only somewhat, so Lisa should still ask.",tags:["a"],q:"Pots Bar Kitchen Nozawa Onsen"}]}]},
+{id:"day-3",tab:"Mon 1 Feb",short:"Monkeys",where:"Nozawa · Jigokudani",title:"Day 3 · Snow monkeys",lede:"A morning or day out to the macaques in their steaming pool, then baths and dinner back in Nozawa.",
+note:"<strong>Book first:</strong> the monkey park uses timed-entry tickets booked online for winter 2026-27. The direct bus runs once a day each way, so its return time sets your time at the park. Its 2026-27 times aren't published yet.",
+steps:[
+{t:"AM",h:"Choose how to go",p:"Two ways from Nozawa.",opts:[
+{n:"Direct winter bus",d:"Once a day each way, via Iiyama. Board at Nozawa Grand Hotel or the Chuo bus terminal. No reservation needed. Half a day.",tags:[],q:"Nozawa Onsen Chuo bus terminal",u:"https://www.snowmonkeyresorts.com/access/from-nozawa-how-to-get-to-snow-monkey/"},
+{n:"Group day tour",d:"Monkeys, Zenko-ji temple and sake, meeting 09:00 at the Chuo bus terminal. A full day. The set lunch is a gluten risk: ask before booking, or bring Lisa's food.",tags:[],q:"Nozawa Onsen Chuo bus terminal",u:"https://www.snowmonkeyresorts.com/?p=1227"}]},
+{t:"",h:"Forest walk to the park",p:"About 30 minutes on a wide, icy path through tall cedars. Wear microspikes or rent crampons at the trailhead."},
+{t:"",h:"The monkeys",p:"Stand back, no food, no touching, no staring them down. Enza Cafe at the trailhead has good coffee; its food isn't checked for Lisa, so bring hers."},
+{t:"PM",h:"Back in Nozawa",p:"Warm up with coffee, then a bath crawl: collect stamps at the checkpoints in front of each of the 13 bathhouses."},
+{t:"18:30",h:"Dinner",p:"Same village guide as last night. Try somewhere new."}]},
+{id:"day-4",tab:"Tue 2 Feb",short:"Forest",where:"Nozawa Onsen",title:"Day 4 · Beech forest",lede:"Lisa skis, Kalindi snowshoes through old beech and cedar. Meet up for the baths.",
+note:"<strong>Vine baskets:</strong> Nozawa's own craft is weaving akebi vine, softened in the Ogama spring. Ask your inn or the tourist information centre to book a session.",
+steps:[
+{t:"08:00",h:"Coffee and breakfast",p:"Fuel up before the mountain.",opts:[
+{n:"Shizen",d:"Mostly vegan, gluten-free options that change daily.",tags:["a","b"],q:"Shizen Collective Nozawa Onsen"},
+{n:"Tanuki cafe",d:"Hand-drip coffee and breakfast, just down from Oyu.",tags:["k"],q:"Tanuki cafe Nozawa Onsen"}]},
+{t:"10:00",h:"Snowshoe in the beech forest",p:"Pick one.",opts:[
+{n:"Resort's guided beech forest walk",d:"From late January. Gondola and chairlift up, then a walk through primeval beech towards Lake Sutaka.",tags:[],q:"Nozawa Onsen Hikage gondola",u:"https://en.nozawaski.com/the-mountain/snow-activities/snowshoeing"},
+{n:"Forest therapy walk at Hokuryu Lake",d:"A slow, guided walk around a heart-shaped lake, about 3 hours from 09:00.",tags:[],q:"Hokuryu Lake Iiyama",u:"https://en.activityjapan.com/publish/plan/39642"},
+{n:"On your own",d:"Rent snowshoes for the virgin beech forest by the Uenotaira slope.",tags:[],q:"Nagasaka Gondola Nozawa Onsen",u:"https://en.nozawaski.com/the-mountain/snow-activities/snowshoeing"}]},
+{t:"14:00",h:"Vine basket weaving",p:"About 2 hours to make a basket. Book through your inn.",opts:[
+{n:"Nozawa Hospitality craft workshop",d:"For guests of their properties, booked through the concierge.",tags:[],q:"Nozawa Onsen",u:"https://nozawahospitality.com/workshops-tours-experiences-events/basket-weaving"},
+{n:"Matsuya ryokan",d:"Vine craft for guests, about 2 hours.",tags:[],q:"Matsuya Nozawa Onsen",u:"https://hpdsp.jp/matsuya/en/stay"}]},
+{t:"17:00",h:"Bath crawl, round two",p:"Pick up the stamps you missed yesterday."},
+{t:"19:00",h:"Last dinner in Nozawa",p:"Book ahead.",opts:[
+{n:"Village restaurant guide",d:"Filter for gluten-free, vegetarian and vegan.",tags:[],q:"Nozawa Onsen restaurants",u:"https://nozawahospitality.com/bars-restaurants"}]}]},
+{id:"day-5",tab:"Wed 3 Feb",short:"Kanazawa",where:"Nozawa to Kanazawa",title:"Day 5 · Snow paper, then teahouses",lede:"Make paper bleached on snow in Iiyama, ride the shinkansen to Kanazawa, and arrive for Setsubun.",
+note:"<strong>Setsubun:</strong> 3 February is the bean-throwing festival that marks the end of winter. Kanazawa's Utasu Shrine is next to the Higashi Chaya teahouse district.",
+steps:[
+{t:"09:00",h:"Liner bus to Iiyama",p:"About 25 minutes. Leave your bags in a station locker."},
+{t:"09:45",h:"Uchiyama washi at the Iiyama paper studio",p:"Paper made here for 350 years, bleached on snow. About 10 minutes' walk from the station. Make postcards or bookmarks, 10 to 20 minutes plus drying. Simple English. Closing days are irregular, so book through the Iiyama tourism bureau.",opts:[
+{n:"Iiyama Handicraft Paper Studio",d:"Uchiyama-gami, a nationally designated traditional craft.",tags:[],q:"Iiyama Handicraft Paper Studio",u:"https://www.iiyama-ouendan.net/en/?p=1498"}]},
+{t:"11:30",h:"Shinkansen Iiyama to Kanazawa",p:"Direct Hakutaka, about 1h15. Trains roughly every hour."},
+{t:"13:00",h:"Drop bags, coffee",p:"Stay central, between Korinbo, Omicho and Higashi Chaya.",opts:[
+{n:"Nonstop Coffee Stand & Roastery",d:"Tiny stand near Higashi Chaya. Hand drip served in wine glasses.",tags:["k"],q:"Nonstop Coffee Stand Kanazawa"},
+{n:"Cafe Tamon",d:"Rice-flour pancakes reported safe for celiacs, in the teahouse district.",tags:["c"],q:"Cafe Tamon Kanazawa"}]},
+{t:"16:00",h:"Setsubun at Utasu Shrine",p:"Bean throwing to chase away bad luck, right next to Higashi Chaya.",opts:[
+{n:"Kanazawa February events",d:"Festival details and times.",tags:[],q:"Utasu Shrine Kanazawa",u:"https://www.magical-trip.com/media/kanazawa-events-february-2026-winter-illuminations-traditional-festivals-geiko-shows-art-exhibitions/"}]},
+{t:"17:30",h:"Higashi Chaya at dusk",p:"Lanterns on, wooden lattices, snow on the eaves."},
+{t:"19:00",h:"Dinner",p:"The strongest food stop of the trip. Book both.",opts:[
+{n:"Love For All",d:"Dedicated gluten-free, almost all vegetarian and vegan. Probably your best shared dinner of the trip. Hours can change, check Instagram.",tags:["d","b"],q:"Love For All Kanazawa",u:"https://www.atly.com/gluten-free/location/LoveForAll"},
+{n:"Aashirwad",d:"Indian. Trained staff, low cross-contact risk on Atly, big vegetarian menu. Reserve.",tags:["c","b"],q:"Aashirwad Kanazawa",u:"https://www.atly.com/gluten-free/location/Aashirwad"}]}]},
+{id:"day-6",tab:"Thu 4 Feb",short:"Crafts",where:"Kanazawa",title:"Day 6 · Gold, gardens and tea",lede:"Kenroku-en in its winter rope cones, tea in a garden teahouse, and an afternoon with your hands in a craft.",
+note:"<strong>One gold craft:</strong> gold leaf and kintsugi both use gold. Pick one for today.",
+steps:[
+{t:"08:30",h:"Coffee",p:"Kanazawa's best roasters.",opts:[
+{n:"Townsfolk Coffee",d:"Light roasts by a barista trained in Denmark, near Omicho Market. Top pick.",tags:["k"],q:"Townsfolk Coffee Kanazawa"},
+{n:"Kanazawaya Coffee Head Office",d:"Roastery just outside the castle's north gate.",tags:["k"],q:"Kanazawaya Coffee Shop Head Office"}]},
+{t:"09:30",h:"Kenroku-en and tea",p:"The pines are tied up with yukitsuri ropes against the snow. Stop for tea in a garden teahouse.",opts:[
+{n:"Kanazawa in winter",d:"Garden, castle and winter sights.",tags:[],q:"Kenrokuen",u:"https://visitkanazawa.jp/en/feature/detail_238.html"}]},
+{t:"12:30",h:"Lunch",p:"Both safe for Lisa.",opts:[
+{n:"Shirom Creperie",d:"100% gluten-free galettes and crepes. Small, owner-run.",tags:["d"],q:"Shirom Creperie Kanazawa",u:"https://www.glutoapp.com/en/place/37789/shirom-creperie"},
+{n:"Cafe Tamon",d:"Rice-flour pancakes, in the teahouse district.",tags:["c"],q:"Cafe Tamon Kanazawa"}]},
+{t:"14:00",h:"Craft afternoon",p:"Pick one.",opts:[
+{n:"Gold leaf at Hakuza",d:"With a master artisan. Kanazawa makes almost all of Japan's gold leaf.",tags:[],q:"Hakuza Kanazawa",u:"https://visitkanazawa.jp/en/activities/detail_2384.html"},
+{n:"Gold leaf at Higashi Chaya, with matcha",d:"In the teahouse district.",tags:[],q:"Higashi Chaya Kanazawa",u:"https://visitkanazawa.jp/en/activities/detail_1691.html"},
+{n:"Kintsugi with Rin Kiyose",d:"Fourth generation of a Kaga maki-e lacquer family. Private, about 75 minutes, English.",tags:[],q:"IN KANAZAWA HOUSE",u:"https://www.japan.travel/en/experiences-in-japan/5956/"},
+{n:"Wagashi making",d:"Near Kenroku-en. Check the sweets are wheat-free before Lisa eats them.",tags:[],q:"Kenrokuen",u:"https://visitkanazawa.jp/en/activities/detail_822.html"},
+{n:"Mizuhiki cord knots",d:"At Tsuda Mizuhiki Orikata, where the craft started.",tags:[],q:"Tsuda Mizuhiki Orikata",u:"https://visitkanazawa.jp/en/trip-ideas/detail_403.html"}]},
+{t:"19:00",h:"Dinner",p:"Book ahead.",opts:[
+{n:"Kanazawa Temakizushi Coil",d:"Build-your-own hand rolls with gluten-free soy sauce. Swap out the wheat tempura and check sauces.",tags:["a","b"],q:"Kanazawa Temakizushi Coil"},
+{n:"Osushi to Genshiyaki Nakamura",d:"Izakaya that cooks with gluten-free in mind, near the station. Thursday works, it closes Wednesdays.",tags:["a"],q:"Osushi to Genshiyaki Nakamura Kanazawa"},
+{n:"Takano",d:"Macrobiotic vegan Japanese with vegetables from its own farm. A bit outside the centre.",tags:["v"],q:"Takano Kanazawa macrobiotic"}]}]},
+{id:"day-7",tab:"Fri 5 Feb",short:"Fly north",where:"Kanazawa to Niseko",title:"Day 7 · Up to Hokkaido",lede:"Bus, plane and ski bus to Hirafu, arriving in late afternoon at the foot of Mt Yotei.",
+note:"<strong>Food warning:</strong> Niseko is the hardest stop for celiac. Book Lisa's dinners ahead. The Resort Liner bus needs a reservation.",
+steps:[
+{t:"09:00",h:"Bus to Komatsu Airport",p:"Limousine bus from Kanazawa Station West Gate, stop 3. About 40 minutes."},
+{t:"11:20",h:"ANA NH1173 Komatsu to New Chitose",p:"Lands 12:50. Backup: NH1175 at 14:20, landing 15:50."},
+{t:"13:50",h:"Hokkaido Resort Liner to Hirafu",p:"From the domestic terminal, arriving at Hirafu Welcome Center 16:45. If the flight is late, the 15:50 bus arrives 18:45. With the backup flight, take the 17:50 bus, arriving 20:45."},
+{t:"17:00",h:"Check in, settle",p:"Stay in lower Hirafu near the intersection to keep dinner walkable."},
+{t:"19:00",h:"Dinner",p:"Book ahead.",opts:[
+{n:"The Barn by Odin",d:"French bistro with Hokkaido produce. Trained staff; celiacs report the chef fried potatoes separately. Lisa's best everyday dinner in Hirafu.",tags:["c"],q:"The Barn by Odin Niseko"},
+{n:"Taj Mahal Hirafu",d:"Indian, listed gluten-free, vegetarian and vegan. Winter hours not confirmed yet.",tags:["a","b"],q:"Taj Mahal Hirafu"},
+{n:"Kougetsu",d:"Izakaya with clearly marked vegan dishes. Bookings fill months ahead.",tags:["v"],q:"Kougetsu Niseko"}]}]},
+{id:"day-8",tab:"Sat 6 Feb",short:"Yotei",where:"Niseko · Hirafu",title:"Day 8 · Frozen lake under Mt Yotei",lede:"Kalindi snowshoes to Hangetsu Lake, Lisa takes the powder.",
+note:"<strong>Night option:</strong> guided night snowshoe tours also run in Niseko, if you want the forest by headlamp.",
+steps:[
+{t:"07:30",h:"Coffee",p:"Pick one.",opts:[
+{n:"Mountain Kiosk Coffee",d:"Hirafu Welcome Centre, opens 07:00, beans by Takano Coffee.",tags:["k"],q:"Hirafu Welcome Center"},
+{n:"% Arabica Niseko",d:"Kyoto specialty brand, reviewers' favourite on the mountain. Closed Wednesdays.",tags:["k"],q:"% Arabica Niseko Hirafu"},
+{n:"Green Farm Deli Cafe",d:"In-house roaster, some of the best coffee in town. 08:00 to 17:00.",tags:["k"],q:"Green Farm Deli Cafe Niseko"}]},
+{t:"09:00",h:"Snowshoe to Hangetsu Lake",p:"Guided, at the foot of Mt Yotei.",opts:[
+{n:"Private half day",d:"Small, at your pace.",tags:[],q:"Hangetsu Lake Niseko",u:"https://en.activityjapan.com/publish/plan/29198"},
+{n:"Niseko Village / NAC",d:"Guided snowshoe tours.",tags:[],q:"Niseko Village",u:"https://www.niseko-village.com/en/guided-snowshoe-tours.html"}]},
+{t:"13:00",h:"Lunch",p:"Lisa's options are thin here.",opts:[
+{n:"Carrotsticks & Cravings",d:"Winter pop-up at The Vale with gluten-free and dairy-free options. No celiac reports yet.",tags:["a"],q:"The Vale Niseko"},
+{n:"Green Farm Deli Cafe",d:"Mushroom toast, falafel, vegan burger. Don't rely on it for Lisa.",tags:["v"],q:"Green Farm Deli Cafe Niseko"}]},
+{t:"16:00",h:"Onsen",p:"Soak tired legs."},
+{t:"19:00",h:"Dinner",p:"Book ahead.",opts:[
+{n:"Sushiya no Saito Niseko",d:"Gluten-free, vegan and vegetarian courses. Open from 15 December.",tags:["a","b"],q:"Sushiya no Saito Niseko",u:"https://www.tablecheck.com/en/sushisaito-niseko"},
+{n:"The Barn by Odin",d:"If last night worked, go back.",tags:["c"],q:"The Barn by Odin Niseko"}]}]},
+{id:"day-9",tab:"Sun 7 Feb",short:"Friend",where:"Niseko · Hirafu",title:"Day 9 · A slow day with your friend",lede:"No plan until dinner. Ski, soak, read, wander.",
+note:"<strong>Friend dinner:</strong> agree the night with your friend. Sushiya no Saito works for both of you.",
+steps:[
+{t:"Morning",h:"Free",p:"Lisa skis, Kalindi chooses: an onsen, a walk, or coffee and a book."},
+{t:"Midday",h:"Lunch outside Hirafu",p:"Worth the drive for Lisa.",opts:[
+{n:"Miracle Yukiya",d:"Its owners describe a fully wheat-free and dairy-free kitchen with its own rice noodles. Near JR Niseko Station. Book dining ahead.",tags:["d","b"],q:"Miracle Yukiya Niseko",u:"https://nisekofood.jp/"}]},
+{t:"Afternoon",h:"Onsen",p:"Long soak before dinner."},
+{t:"19:00",h:"Dinner with your friend",p:"Book ahead.",opts:[
+{n:"Sushiya no Saito Niseko",d:"Gluten-free, vegan and vegetarian courses.",tags:["a","b"],q:"Sushiya no Saito Niseko",u:"https://www.tablecheck.com/en/sushisaito-niseko"},
+{n:"Taj Mahal Hirafu",d:"Casual, listed gluten-free and vegetarian.",tags:["a","b"],q:"Taj Mahal Hirafu"}]}]},
+{id:"day-10",tab:"Mon 8 Feb",short:"Otaru",where:"Niseko to Otaru",title:"Day 10 · Canal of candles",lede:"A slow local train to a port town lit by thousands of snow lanterns.",
+note:"<strong>Taxis don't wait in Hirafu:</strong> book one in the GO, Uber or DiDi app, or ask if your lodging drops guests at Kutchan Station.",
+steps:[
+{t:"10:30",h:"Taxi to Kutchan Station",p:"About 20 minutes."},
+{t:"11:00",h:"Coffee and a treat in Kutchan",p:"Near the station.",opts:[
+{n:"Sprout",d:"Home-roasted coffee. Sells gluten-free vegan cookies.",tags:["k","a"],q:"Sprout coffee Kutchan"},
+{n:"Fujii Sweets",d:"Rice-flour cakes and cookies. Not stated as fully gluten-free.",tags:["a"],q:"Okashi no Fujii Kutchan"}]},
+{t:"11:50",h:"Local train Kutchan to Otaru",p:"About 70 minutes, roughly hourly. Other departures: 12:55, 14:09. Seats can't be reserved."},
+{t:"13:30",h:"Check in near the station",p:"8 to 10 minutes' walk to the canal."},
+{t:"17:00",h:"Otaru Snow Light Path",p:"6 to 13 February. Snow lanterns and floating candles along the canal and the old railway line.",opts:[
+{n:"Festival guide",d:"Venues and lighting times.",tags:[],q:"Otaru Canal",u:"https://www.gltjp.com/en/article/item/21382/"}]},
+{t:"19:00",h:"Dinner",p:"Monday is the only night that works here.",opts:[
+{n:"Yabuhan",d:"Historic soba house with allergens and diets labelled. Ask whether the soba has wheat and about shared water. Closed Tue and Wed. Expect up to an hour's wait.",tags:["a","b"],q:"Yabuhan Otaru"}]}]},
+{id:"day-11",tab:"Tue 9 Feb",short:"Glass",where:"Otaru",title:"Day 11 · Glass and lanterns",lede:"Make something in glass, then help light the canal.",
+note:"<strong>Tuesday closures:</strong> The Glass Studio in Otaru and Yabuhan are closed today. Dinner is the weak spot: ask your hotel.",
+steps:[
+{t:"09:00",h:"Coffee",p:"Pick one.",opts:[
+{n:"B3 Coffee Otaru",d:"Specialty coffee run by an Australian and his Japanese family. Top pick.",tags:["k"],q:"B3 Coffee Otaru"},
+{n:"Coffee House Chaff",d:"Small, quality-focused cafe.",tags:["k"],q:"Coffee House Chaff Otaru"}]},
+{t:"10:00",h:"Glass workshop",p:"Pick one.",opts:[
+{n:"Glassblowing",d:"About 20 minutes. Your piece is ready 2 days later or shipped home.",tags:[],q:"Otaru glass workshop",u:"https://hoshinoresorts.com/en/guide/area/hokkaidotohoku/hokkaido/otaru/otaru-experience/"},
+{n:"Sandblasting",d:"Design a pattern and frost it onto Otaru glass, near the canal. Take it with you.",tags:[],q:"Otaru canal craft shop",u:"https://www.veltra.com/a/195818"}]},
+{t:"11:30",h:"Lunch",p:"Lisa's strongest Otaru meal.",opts:[
+{n:"Otaru Hokushoan",d:"100% buckwheat soba and rice-flour tempura, in a historic building. Lunch Tue to Thu 11:00 to 14:00. Dashi uses bonito, so not for Kalindi. Ask about the fryer and water.",tags:["a"],q:"Otaru Hokushoan",u:"https://otaru-hokushoan.jp/"},
+{n:"Kometowa",d:"Rice-flour sweets shop with a small cafe upstairs. A treat, not a meal.",tags:["d"],q:"Kometowa Otaru"}]},
+{t:"15:00",h:"Make snow lanterns",p:"Join as on-the-day volunteers, then float candles on the canal.",opts:[
+{n:"Snow Light Path",d:"Volunteer and festival info.",tags:[],q:"Otaru Canal",u:"https://www.japan.travel/en/spot/1853/"}]},
+{t:"19:00",h:"Dinner",p:"Ask your hotel for a safe option for Lisa. cafe ku-pe is wheat-free but may be closed in winter: check its Instagram."}]},
+{id:"day-12",tab:"Wed 10 Feb",short:"Tokyo",where:"Otaru to Tokyo",title:"Day 12 · Back to the city",lede:"Train to the airport, a short flight, and a quiet night in Ginza.",
+note:"<strong>Hotel:</strong> same Ginza base as day 1, three nights.",
+steps:[
+{t:"Morning",h:"Train Otaru to New Chitose",p:"Then a flight to Haneda. Many flights a day."},
+{t:"Afternoon",h:"Taxi to Ginza",p:"About 30 to 40 minutes. Check in, rest."},
+{t:"19:00",h:"Easy dinner",p:"Close to the hotel.",opts:[
+{n:"FANCL Brown Rice Meals",d:"Whole kitchen gluten-free. Weekday dinner 17:00 to 22:00, one daily vegan option.",tags:["d","b"],q:"FANCL Ginza Square"},
+{n:"Ain Soph Ginza",d:"Plant-based Japanese with gluten-free dishes.",tags:["c","b"],q:"Ain Soph Ginza"}]}]},
+{id:"day-13",tab:"Thu 11 Feb",short:"Plum",where:"Tokyo or Atami",title:"Day 13 · Plum blossoms",lede:"The first blossoms of the year. Decide in the morning, depending on energy.",
+note:"<strong>National holiday:</strong> expect crowds. Stall food is for browsing, so plan a safe meal for Lisa separately.",
+steps:[
+{t:"Morning",h:"Choose your plum day",p:"Neither needs a hotel change.",opts:[
+{n:"A: Atami Plum Garden",d:"Best blooms on 11 Feb, with early, mid and late varieties. Stalls, free amazake, a footbath. 08:30 to 16:00. About 2 hours round trip by shinkansen.",tags:[],q:"Atami Baien",u:"https://tokyocheapo.com/events/atami-plum-festival/"},
+{n:"B: Yushima Tenjin",d:"Stalls, tea, plum wine tasting, shamisen, near Ueno. 2027 dates not confirmed yet.",tags:[],q:"Yushima Tenjin",u:"https://tokyocheapo.com/events/bunkyo-plum-blossom-festival/"},
+{n:"B: Hanegi Park",d:"About 600 trees, music and stalls on weekends, 15 minutes from Shinjuku. 6 to 28 Feb 2027.",tags:[],q:"Hanegi Park",u:"https://tokyocheapo.com/entertainment/outdoors/plum-blossoms-in-tokyo/"}]},
+{t:"Midday",h:"Lunch for Lisa",p:"Bring safe food for Atami, or eat in Tokyo.",opts:[
+{n:"Soranoiro Nippon",d:"Gluten-free and vegan ramen at Tokyo Station. Handy on the way to or from Atami.",tags:["c","b"],q:"Soranoiro Nippon Tokyo Station"}]},
+{t:"19:00",h:"Dinner",p:"Book ahead.",opts:[
+{n:"Faro",d:"Kalindi's vegan tasting menu, if not done on day 1.",tags:["v"],q:"Faro Shiseido Building Ginza",u:"https://guide.michelin.com/rs/en/tokyo-region/tokyo/restaurant/faro-1194154"},
+{n:"Ain Soph Ginza",d:"Plant-based Japanese.",tags:["c","b"],q:"Ain Soph Ginza"}]}]},
+{id:"day-14",tab:"Fri 12 Feb",short:"Shop",where:"Tokyo",title:"Day 14 · Shops and one last craft",lede:"The shopping day, with an optional workshop to take one more handmade thing home.",
+note:"<strong>Last-night treat:</strong> Gluten Free Kushiage Su is open Fridays. Book via TableCheck.",
+steps:[
+{t:"09:00",h:"Coffee",p:"One you haven't tried.",opts:[
+{n:"Bongen Coffee",d:"Ginza backstreets.",tags:["k"],q:"Bongen Coffee Ginza"},
+{n:"Geshary Coffee",d:"Gesha only, Hibiya.",tags:["k"],q:"Geshary Coffee Hibiya"}]},
+{t:"10:00",h:"Shopping",p:"Your list. Ship heavy things home if needed."},
+{t:"14:00",h:"Optional craft workshop",p:"Pick one, all in English.",opts:[
+{n:"Edo kiriko glass cutting at Sokichi",d:"Asakusa, about 90 minutes. Tokyo's own craft.",tags:[],q:"Sokichi Asakusa",u:"https://www.veltra.com/en/a/127048"},
+{n:"Sashiko at canoha",d:"Ogikubo, 2 hours. Leave with materials to keep stitching.",tags:[],q:"canoha Ogikubo",u:"https://www.kkday.com/en/product/558286"},
+{n:"Kintsugi at mon cadeau",d:"Shibuya, take your piece home the same day.",tags:[],q:"mon cadeau Shibuya",u:"https://www.klook.com/activity/187250-kintsugi-workshop-class-in-shibuya"},
+{n:"Woodblock print at Mokuhankan",d:"Asakusa, print your own.",tags:[],q:"Mokuhankan Asakusa",u:"https://en.japantravel.com/tokyo/mokuhankan-ukiyo-e-workshop/17941"}]},
+{t:"19:00",h:"Last dinner",p:"Book ahead.",opts:[
+{n:"Gluten Free Kushiage Su",d:"Whole kitchen gluten-free, six seats, starts 19:00. Seafood-heavy, vegetarian not confirmed.",tags:["d","x"],q:"Gluten Free Kushiage Su Ginza"},
+{n:"Ain Soph Ginza",d:"Works for both of you.",tags:["c","b"],q:"Ain Soph Ginza"}]},
+{t:"21:00",h:"Pack",p:"Weigh bags, keep Lisa's flight snacks in hand luggage."}]},
+{id:"day-15",tab:"Sat 13 Feb",short:"Home",where:"Tokyo to Geneva",title:"Day 15 · Sayonara",lede:"Morning coffee, taxi to Haneda, home the same night.",
+note:"<strong>Check in online</strong> 23 hours before. Confirm the special meals are still on the booking.",
+steps:[
+{t:"08:00",h:"Last coffee and checkout",p:""},
+{t:"09:30",h:"Taxi to Haneda",p:"About 30 to 40 minutes. Aim to be at Terminal 3 by 10:30."},
+{t:"12:35",h:"LH717 Haneda to Frankfurt",p:"Lands Frankfurt T1 at 19:00. 2h 20m to connect."},
+{t:"21:20",h:"LH1222 Frankfurt to Geneva",p:"Lands Geneva T1 at 22:30. Home."}]}
+];
+const tabs=document.getElementById("tabs"),day=document.getElementById("day");
+tabs.innerHTML=DAYS.map(d=>`<button class="tab" role="tab" id="t-${d.id}" aria-controls="day" aria-selected="false" data-id="${d.id}"><b>${d.tab}</b>${d.short}</button>`).join("");
+let done={};try{done=JSON.parse(localStorage.getItem("jp-done")||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem("jp-done",JSON.stringify(done))}catch(e){}};
+const optHTML=o=>`<div class="opt"><h4>${o.n}</h4><p>${o.d}</p>${o.tags.length?`<div class="tags">${o.tags.map(k=>`<span class="tag ${T[k][1]}">${T[k][0]}</span>`).join("")}</div>`:""}<div class="links"><a href="${map(o.q)}" target="_blank" rel="noopener">Map</a>${o.u?`<a href="${o.u}" target="_blank" rel="noopener">Details</a>`:""}</div></div>`;
+function show(id){
+const i=Math.max(0,DAYS.findIndex(d=>d.id===id)),d=DAYS[i];
+for(const b of tabs.children){const on=b.dataset.id===d.id;b.setAttribute("aria-selected",on);if(on)b.scrollIntoView({inline:"nearest",block:"nearest"})}
+day.innerHTML=`<div class="dayhead"><p class="where">${d.where}</p><h2>${d.title}</h2><p class="lede">${d.lede}</p></div>
+<div class="note">${d.note}</div>
+<ol class="tl">${d.steps.map((s,j)=>{const k=d.id+"-"+j;return `<li class="step${done[k]?" done":""}" data-k="${k}"><div class="time">${s.t}</div><div class="body"><h3><span>${s.h}</span></h3><p>${s.p}</p>${s.opts?`<details class="opts"${j<99?"":""}><summary>${s.opts.length} options</summary>${s.opts.map(optHTML).join("")}</details>`:""}</div></li>`}).join("")}</ol>
+<div class="pager">${i>0?`<button class="btn" data-go="${DAYS[i-1].id}">Previous day</button>`:"<span></span>"}${i<DAYS.length-1?`<button class="btn" data-go="${DAYS[i+1].id}">Next day</button>`:"<span></span>"}</div>`;
+}
+const go=id=>{if(location.hash!=="#"+id)location.hash=id;else show(id)};
+tabs.addEventListener("click",e=>{const b=e.target.closest(".tab");if(b)go(b.dataset.id)});
+day.addEventListener("click",e=>{const b=e.target.closest("[data-go]");if(b){go(b.dataset.go);window.scrollTo({top:tabs.parentElement.offsetTop,behavior:"smooth"})}});
+day.addEventListener("change",e=>{const c=e.target.closest("input[data-k]");if(!c)return;done[c.dataset.k]=c.checked;save();c.closest(".step").classList.toggle("done",c.checked)});
+window.addEventListener("hashchange",()=>show(location.hash.slice(1)));
+show(location.hash.slice(1)||"day-1");
+const gal=document.getElementById("gal");
+const step=dir=>{const f=gal.querySelector("figure");gal.scrollBy({left:dir*(f?f.offsetWidth+12:300),behavior:"smooth"})};
+document.getElementById("prev").addEventListener("click",()=>step(-1));
+document.getElementById("next").addEventListener("click",()=>step(1));
+gal.addEventListener("keydown",e=>{if(e.key==="ArrowRight")step(1);if(e.key==="ArrowLeft")step(-1)});
+document.getElementById("up").addEventListener("change",e=>{for(const f of e.target.files){const fig=document.createElement("figure");const img=document.createElement("img");img.src=URL.createObjectURL(f);img.alt="Your photo";const cap=document.createElement("figcaption");cap.textContent=f.name;fig.append(img,cap);gal.prepend(fig)}gal.scrollTo({left:0,behavior:"smooth"})});
+}
+</script>
+</body>
+</html>
