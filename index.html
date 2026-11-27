@@ -6,83 +6,19 @@
 <title>Japan Winter Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700&family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
-<style>
-/*
-VOICE: calm, warm, a friend's travel folder, not a sales brochure.
-IDEA: a ryokan welcome folder: one card per day, with an inked timeline and tucked-in option slips.
-PICTURE: hand-drawn winter scenes (bathhouse steam, train in snow, monkeys in a pool) in a swipeable gallery.
-COLOUR and TYPE: aizome indigo with snow white and one vermilion accent; Zen Kaku Gothic New headings, Noto Sans body.
-LAYOUT: gallery on top, sticky day tabs, one day at a time, timeline with large hanging times.
-*/
-:root{color-scheme:light dark;
---bg:light-dark(#f7f8fa,#0f1424);--card:light-dark(#ffffff,#171e33);--ink:light-dark(#18223d,#e9ecf5);
---soft:light-dark(#5a6482,#a7afc6);--line:light-dark(#dfe3ec,#2a3350);--indigo:light-dark(#1f2d55,#2b3c70);
---ver:light-dark(#d4452a,#ff7a5c);--chip:light-dark(#eef1f7,#222a44);--ok:light-dark(#1d6b4f,#7fd6ac)}
-:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
-*{box-sizing:border-box;min-width:0}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Noto Sans",system-ui,sans-serif;overflow-x:clip}
-h1,h2,h3{font-family:"Zen Kaku Gothic New",system-ui,sans-serif;line-height:1.1;text-wrap:balance;margin:0}
-a{color:var(--ver)}
-.top{background:var(--indigo);color:#f2f4fb;padding:clamp(20px,4vw,40px) max(5vw,16px) 0}
-.top h1{font-size:clamp(32px,6vw,48px)}
-.top p{margin:6px 0 18px;color:#c9d0e6}
-.gal{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:18px;scrollbar-width:thin}
-.gal figure{flex:0 0 min(86%,520px);margin:0;scroll-snap-align:start;border-radius:14px;overflow:hidden;background:#101a38;position:relative}
-.gal svg,.gal img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
-.gal figcaption{position:absolute;left:12px;bottom:10px;font-size:13px;color:#fff;background:rgba(10,16,36,.6);padding:3px 9px;border-radius:20px}
-.galbar{display:flex;gap:8px;align-items:center;padding-bottom:20px;flex-wrap:wrap}
-.btn{min-height:44px;padding:0 16px;border-radius:22px;border:1px solid rgba(255,255,255,.35);background:transparent;color:inherit;font:600 15px "Noto Sans",sans-serif;cursor:pointer}
-.btn:focus-visible,.tab:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--ver);outline-offset:2px}
-label.btn{display:inline-flex;align-items:center}
-.galbar small{color:#c9d0e6;font-size:13px}
-nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
-.tabs{display:flex;gap:6px;overflow-x:auto;padding:10px max(5vw,16px)}
-.tab{flex:none;min-height:44px;padding:0 14px;border-radius:22px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:600 14px "Noto Sans",sans-serif;cursor:pointer;text-align:left}
-.tab b{display:block;font-size:12px;color:var(--soft);font-weight:600}
-.tab[aria-selected=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.tab[aria-selected=true] b{color:inherit;opacity:.75}
-main{max-width:900px;margin:0 auto;padding:clamp(20px,4vw,40px) max(5vw,16px) 60px}
-.dayhead h2{font-size:clamp(28px,5vw,40px)}
-.dayhead .where{color:var(--ver);font-weight:600;margin:0 0 6px}
-.dayhead p.lede{color:var(--soft);margin:10px 0 0;max-width:62ch}
-.note{background:var(--chip);border-radius:12px;padding:12px 14px;margin:18px 0;font-size:15px}
-.note strong{color:var(--ink)}
-ol.tl{list-style:none;margin:26px 0 0;padding:0}
-.step{display:grid;grid-template-columns:4.6em minmax(0,1fr);gap:0 14px;position:relative;padding-bottom:22px}
-.step::before{content:"";position:absolute;left:calc(4.6em + 6px);top:10px;bottom:0;width:2px;background:var(--line)}
-.step:last-child::before{display:none}
-.time{font:700 19px "Zen Kaku Gothic New",sans-serif;white-space:nowrap;text-align:right;padding-top:1px}
-.body{position:relative;padding-left:20px}
-.body::before{content:"";position:absolute;left:-1px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--card);border:3px solid var(--ver)}
-.step.done .body::before{background:var(--ok);border-color:var(--ok)}
-.body h3{font-size:19px;display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
-.body p{margin:4px 0 0;color:var(--soft);font-size:15.5px}
-.chk{flex:none;display:inline-flex;align-items:center;gap:6px;font:500 13px "Noto Sans",sans-serif;color:var(--soft);cursor:pointer;min-height:32px}
-.chk input{width:20px;height:20px;accent-color:var(--ok)}
-details.opts{margin-top:10px;background:var(--card);border:1px solid var(--line);border-radius:12px}
-details.opts summary{cursor:pointer;list-style:none;min-height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-weight:600}
-details.opts summary::-webkit-details-marker{display:none}
-details.opts summary::after{content:"+";font-size:22px;color:var(--ver)}
-details.opts[open] summary::after{content:"\2212"}
-.opt{padding:12px 14px;border-top:1px solid var(--line)}
-.opt h4{margin:0;font-size:16px}
-.opt p{margin:3px 0 0;font-size:14.5px;color:var(--soft)}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
-.tag{font-size:12.5px;padding:2px 9px;border-radius:20px;background:var(--chip);color:var(--ink);white-space:nowrap}
-.tag.d{background:var(--ok);color:var(--card)}
-.tag.b{background:var(--ver);color:#fff}
-.links{margin-top:6px;font-size:14px;display:flex;gap:14px;flex-wrap:wrap}
-.links a{min-height:32px;display:inline-flex;align-items:center}
-.pager{display:flex;justify-content:space-between;gap:10px;margin-top:20px}
-.pager .btn{border-color:var(--line);color:var(--ink);background:var(--card)}
-footer{color:var(--soft);font-size:13px;text-align:center;padding:0 16px 40px}
-.snow circle{animation:fall 9s linear infinite}
-@keyframes fall{from{transform:translateY(-40px)}to{transform:translateY(460px)}}
-@media(prefers-reduced-motion:reduce){.snow circle{animation:none}}
-@media(max-width:600px){.step{grid-template-columns:3.6em minmax(0,1fr);gap:0 10px}.step::before{left:calc(3.6em + 4px)}.time{font-size:16px}.body h3{font-size:17px;flex-direction:column;gap:2px}}
-</style>
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+<div class="sitenav"><div class="wrap">
+<a class="brand" href="./">Japan Winter 2027</a>
+<ul>
+<li><a class="link active" href="./">Itinerary</a></li>
+<li><a class="link" href="food.html">Food</a></li>
+<li><a class="link" href="workshops.html">Workshops</a></li>
+<li><a class="link" href="plum.html">Plum</a></li>
+<li><a class="link" href="possibilities.html">Alternatives</a></li>
+</ul>
+</div></div>
 <header class="top">
 <h1>Japan in winter</h1>
 <p>Kalindi and Lisa · 29 Jan to 13 Feb 2027</p>
@@ -164,7 +100,7 @@ footer{color:var(--soft);font-size:13px;text-align:center;padding:0 16px 40px}
 <small>Your photos show on this device only. Send them to Claude to add them for good.</small>
 </div>
 </header>
-<nav><div class="tabs" id="tabs" role="tablist" aria-label="Days"></div></nav>
+<nav class="daynav"><div class="tabs" id="tabs" role="tablist" aria-label="Days"></div></nav>
 <main id="day" aria-live="polite"></main>
 <footer>Facts checked 26 to 27 Nov 2026. Opening hours change, so check Instagram or Google before you go. Nothing is booked unless it says so.</footer>
 <script>
